@@ -1,0 +1,19 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="client pulish" type="ShConfigurationType">
+    <option name="SCRIPT_TEXT" value="tcb.cmd hosting delete /blazor -e &quot;visual-time-5gdiwp6tb894caff&quot; | tcb.cmd hosting deploy bin/Release/net6.0/publish/wwwroot /blazor -e &quot;visual-time-5gdiwp6tb894caff&quot;" />
+    <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+    <option name="SCRIPT_PATH" value="" />
+    <option name="SCRIPT_OPTIONS" value="" />
+    <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="false" />
+    <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/Client" />
+    <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+    <option name="INTERPRETER_PATH" value="" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="EXECUTE_IN_TERMINAL" value="true" />
+    <option name="EXECUTE_SCRIPT_FILE" value="false" />
+    <envs />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Publish Client to folder" run_configuration_type="DotNetFolderPublish" />
+    </method>
+  </configuration>
+</component>

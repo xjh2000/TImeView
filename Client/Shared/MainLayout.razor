@@ -1,0 +1,79 @@
+﻿@namespace Client
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@inherits LayoutComponentBase
+@inject IWebAssemblyHostEnvironment _hostEnvironment
+
+<AntDesign.ProLayout.BasicLayout
+    BaseURL="@basePath"
+    Logo="@("./logo.svg")"
+    Title="Time View"
+    MenuData="_menuData">
+    @code{
+        private static readonly string basePath = "/blazor/";
+
+        private readonly MenuDataItem[] _menuData =
+        {
+            new()
+            {
+                Path = basePath,
+                Name = "home",
+                Key = "home",
+                Icon = "smile",
+                Children = new []
+                {
+                    new MenuDataItem()
+                    {
+                        Path = basePath,
+                        Name = "home",
+                        Key = "home",
+                        Icon = "smile",
+                    }
+                }
+            }
+        };
+    }
+    <RightContentRender>
+        <Client.Components.RightContent/>
+    </RightContentRender>
+    <ChildContent>
+        @Body
+    </ChildContent>
+    <FooterRender>
+        <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
+        @code
+        {
+            private LinkItem[] Links { get; } =
+                {
+                    new()
+                    {
+                        Key = "Ant Design Blazor",
+                        Title = "Ant Design Blazor",
+                        Href = "https://antblazor.com",
+                        BlankTarget = true
+                    },
+                    new()
+                    {
+                        Key = "github",
+                        Title = (RenderFragment) (@<Icon Type="github"/>),
+                        Href = "https://github.com/xjh2000",
+                        BlankTarget = true
+                    },
+                    new()
+                    {
+                        Key = "Blazor",
+                        Title = "Blazor",
+                        Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
+                        BlankTarget = true
+                    }
+                };
+        }
+    </FooterRender>
+</AntDesign.ProLayout.BasicLayout>
+
+@if (_hostEnvironment.IsDevelopment())
+{
+    <SettingDrawer/>
+}
+
+
+
