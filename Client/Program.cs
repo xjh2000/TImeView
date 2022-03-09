@@ -5,6 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
+//TODO interface Icons and Style
+//TODO WPA run Logic
+//TODO optimization public file size
+
 namespace Client
 {
     public class Program
