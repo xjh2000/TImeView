@@ -1,37 +1,50 @@
 ﻿@namespace Client
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@using Microsoft.Extensions.Logging
 @inherits LayoutComponentBase
+@inject ILogger<MainLayout> _logger
 @inject IWebAssemblyHostEnvironment _hostEnvironment
 
 <AntDesign.ProLayout.BasicLayout
     BaseURL="@basePath"
     Logo="@("./logo.svg")"
     Title="Time View"
-    MenuData="_menuData">
+    MenuData="@MenuData">
+    
+
     @code{
+
+        protected override void OnInitialized()
+        {
+            if (_hostEnvironment.IsDevelopment())
+            {
+                MenuData = MenuData.Append(new MenuDataItem()
+                {
+                    Path = basePath + "./test",
+                    Name = "test",
+                    Key = "test",
+                    Icon = "question"
+                });
+            }
+
+            base.OnInitialized();
+        }
+
         private static readonly string basePath = "/blazor/";
 
-        private readonly MenuDataItem[] _menuData =
-        {
-            new()
+        private MenuDataItem[] MenuData { set; get; } =
             {
-                Path = basePath,
-                Name = "home",
-                Key = "home",
-                Icon = "smile",
-                Children = new []
+                new MenuDataItem()
                 {
-                    new MenuDataItem()
-                    {
-                        Path = basePath,
-                        Name = "home",
-                        Key = "home",
-                        Icon = "smile",
-                    }
+                    Path = basePath,
+                    Name = "home",
+                    Key = "home",
+                    Icon = "smile"
                 }
-            }
-        };
+            };
+
     }
+
     <RightContentRender>
         <Client.Components.RightContent/>
     </RightContentRender>
@@ -39,41 +52,27 @@
         @Body
     </ChildContent>
     <FooterRender>
-        <FooterView Copyright="2021 Ant Design Blazor" Links="Links"></FooterView>
+        <FooterView Copyright="xjh2000" Links="Links"></FooterView>
+
         @code
         {
             private LinkItem[] Links { get; } =
                 {
                     new()
                     {
-                        Key = "Ant Design Blazor",
-                        Title = "Ant Design Blazor",
-                        Href = "https://antblazor.com",
-                        BlankTarget = true
-                    },
-                    new()
-                    {
                         Key = "github",
                         Title = (RenderFragment) (@<Icon Type="github"/>),
                         Href = "https://github.com/xjh2000",
                         BlankTarget = true
-                    },
-                    new()
-                    {
-                        Key = "Blazor",
-                        Title = "Blazor",
-                        Href = "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor?WT.mc_id=DT-MVP-5003987",
-                        BlankTarget = true
                     }
                 };
         }
+
     </FooterRender>
 </AntDesign.ProLayout.BasicLayout>
+
 
 @if (_hostEnvironment.IsDevelopment())
 {
     <SettingDrawer/>
 }
-
-
-
