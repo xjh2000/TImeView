@@ -6,11 +6,11 @@
 @inject IWebAssemblyHostEnvironment _hostEnvironment
 
 <AntDesign.ProLayout.BasicLayout
-    BaseURL="@basePath"
+    BaseURL="./"
     Logo="@("./logo.svg")"
     Title="Time View"
     MenuData="@MenuData">
-    
+
 
     @code{
 
@@ -18,9 +18,9 @@
         {
             if (_hostEnvironment.IsDevelopment())
             {
-                MenuData = MenuData.Append(new MenuDataItem()
+                MenuData = MenuData.Append(new MenuDataItem
                 {
-                    Path = basePath + "./test",
+                    Path = "./test",
                     Name = "test",
                     Key = "test",
                     Icon = "question"
@@ -30,13 +30,11 @@
             base.OnInitialized();
         }
 
-        private static readonly string basePath = "/blazor/";
-
         private MenuDataItem[] MenuData { set; get; } =
             {
-                new MenuDataItem()
+                new()
                 {
-                    Path = basePath,
+                    Path = "./",
                     Name = "home",
                     Key = "home",
                     Icon = "smile"

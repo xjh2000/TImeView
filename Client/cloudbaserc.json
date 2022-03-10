@@ -1,0 +1,20 @@
+{
+  "version": "2.0",
+  "envId": "blazor-3gsro2vm598c7776",
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "framework": {
+    "name": "blazor-learn",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "outputPath": "/bin/Release/net6.0/publish/wwwroot",
+          "envVariables": {
+            "REACT_APP_ENV_ID": "{{env.ENV_ID}}"
+          }
+        }
+      }
+    }
+  },
+  "region": "ap-guangzhou"
+}

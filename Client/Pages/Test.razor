@@ -1,10 +1,28 @@
 @page "/Test"
-<h3>Test</h3>
+@using Microsoft.Extensions.Logging
+@using Microsoft.AspNetCore.Components
+@using Client.Moudle
+@inject ILogger<Test> Logger
 
-<Expander extra="10" />
-    
+<EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
 
+    <InputText id="name" @bind-Value="exampleModel.Name"/>
 
-@code
-{
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private ExampleModel exampleModel = new();
+
+    private void HandleValidSubmit(EditContext e)
+    {
+        Console.WriteLine(2);
+        Console.WriteLine(1);
+        Logger.LogInformation("HandleValidSubmit called");
+
+    // Process the valid form
+    }
+
 }
